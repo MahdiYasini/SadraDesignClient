@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeStyles, Button, Box, Hidden, Paper } from '@material-ui/core';
+import { makeStyles, Button, Box, Hidden } from '@material-ui/core';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 
 import backgroundImage from '../../assets/images/languageBackground.jpg'
