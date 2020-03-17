@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updatedObject } from '../utility';
+import { updateObject } from '../utility';
 
 const initialState = {
     language: null
@@ -8,7 +8,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type){
         case actionTypes.SET_LANGUAGE:
-            return updatedObject(state, {language: action.language})
+            return updateObject(state, {language: action.language})
         default:
             return state;
     }
