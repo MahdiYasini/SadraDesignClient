@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeStyles, Button, Box, Hidden } from '@material-ui/core';
-import blueGrey from '@material-ui/core/colors/blueGrey';
+import { makeStyles } from '@material-ui/core';
 
 import backgroundImage from '../../assets/images/languageBackground.jpg'
 import * as actionCreators from '../../store/actions/index';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
     rootDiv: {
         width: "100%",
         display: "flex",
@@ -18,84 +17,50 @@ const useStyles = makeStyles(theme => ({
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
     },
-    chooseLanguageBox: {
-        backgroundImage: "linear-gradient(90deg, rgb(157, 0, 2, 0.5) 10%, rgb(178, 148, 5, 0.5) 90%)",
-    },
-    paragraph: {
-        color: blueGrey[200],
-        fontSize: "36px",
-        textAlign: "center"
+    showCaseContent: {
+        backdropFilter: "blur(5px)",
+        borderRadius: "10px",
+        border: "1px solid rgb(66.3, 66.3, 66.3)"
     },
     button: {
-        margin: theme.spacing(3),
-        padding: theme.spacing(4),
-        fontSize: "22px",
-        color: blueGrey[200],
-        borderColor: blueGrey[200],
+        backgroundColor: "rgb(66.3, 66.3, 66.3, 0.5)",
+        borderRadius: "5px",
+        border: "1px solid rgb(66.3, 66.3, 66.3)",
+        display: "inline-block",
+        cursor: "pointer",
+        color: "#ffffff",
+        fontSize: "17px",
+        padding: "16px 31px",
+        textDecoration: "none",
+        margin: "1.5rem",
+        transition: "all 1s ease-in-out",
+        "&:hover": {
+            transform: "scale(2)",
+        },
+        "&:focus": {
+            outline: "none",
+            boxShadow: "0 0 3pt 2pt #fff"
+        }
     }
-}));
+});
 
 const ChooseLanguage = (props) => {
     const classes = useStyles();
     return (
-        <Box className={classes.rootDiv}>
-            <Hidden mdUp>
-            <Box border={1} borderColor={blueGrey[200]} borderRadius={4} className={classes.chooseLanguageBox}>
-                    <Box p={1}
-                        width="100%"
-                        display="flex"
-                        flexWrap="wrap"
-                        flexDirection = "column"
-                        alignItems = "center">
-                        <Box>
-                            <Button
-                                size="large"
-                                className={classes.button}
-                                onClick={() => props.onSetLanguage("eng")}
-                                variant="outlined">
-                                English
-                            </Button>
-                        </Box>
-                        <Box >
-                            <Button
-                                className={classes.button}
-                                onClick={() => props.onSetLanguage("fa")}
-                                variant="outlined">
-                                فارسی
-                        </Button>
-                        </Box>
-                    </Box>
-                </Box>
-            </Hidden>
-            <Hidden smDown>
-                <Box border={1} borderColor={blueGrey[200]} borderRadius={4} className={classes.chooseLanguageBox}>
-                    <Box p={1}
-                        width="100%"
-                        display="flex"
-                        flexWrap="wrap"
-                        justifyContent="space-between">
-                        <Box>
-                            <Button
-                                size="large"
-                                className={classes.button}
-                                onClick={() => props.onSetLanguage("eng")}
-                                variant="outlined">
-                                English
-                            </Button>
-                        </Box>
-                        <Box>
-                            <Button
-                                size="large"
-                                className={classes.button}
-                                onClick={() => props.onSetLanguage("fa")}
-                                variant="outlined">
-                                فارسی
-                        </Button>
-                        </Box>
-                    </Box>
-                </Box>
-            </Hidden>
-        </Box>
+        <div className = {classes.rootDiv}>
+            <div className = {classes.showCaseContent}>
+                <button
+                onClick = {() => props.onSetLanguage('en')}
+                className={classes.button}>
+                    English
+                </button>
+                <button
+                onClick = {() => props.onSetLanguage('fa')}
+                className={classes.button}>
+                    فارسی
+                </button>
+            </div>
+        </div>
     );
 };
 
@@ -103,6 +68,6 @@ const mapDispatchToProps = dispatch => {
     return {
         onSetLanguage: (lan) => dispatch(actionCreators.setLanguage(lan))
     }
-}
+};
 
 export default connect(null, mapDispatchToProps)(ChooseLanguage);
