@@ -9,8 +9,8 @@ import Blog from './components/Blog/Blog';
 function App(props) {
   return (
     <BrowserRouter>
-
-      {props.lan? <Blog/> :  <ChooseLanguage />}
+<Blog/>
+      {/* {props.lan? <Blog/> :  <ChooseLanguage />} */}
     </BrowserRouter>
   );
 }
