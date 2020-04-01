@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { makeStyles, Hidden } from '@material-ui/core'
+import { makeStyles, Hidden, List, ListItem, ListItemText, Button, Drawer } from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu';
 
 import logoUrl from '../../assets/images/logo.png';
 
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
+import { FaTelegram } from "react-icons/fa";
+
+import Home from '../Home/Home'
 
 const useStyles = makeStyles({
     rootHeader: {
@@ -17,17 +20,22 @@ const useStyles = makeStyles({
         background: "rgb(255, 255, 255, 0.7)",
     },
     logo: {
-        margin: "0 auto",
+        // margin: "0 auto",
+        display: "flex",
+        justifyContent: "center",
         width: "100%",
         height: "70%",
-        borderBottom: "1px solid black"
-    },
-    imageLogo: {
-        maxWidth: "100%",
-        maxHeight: "100%",
-        objectFit: "cover",
-        margin: "0 auto",
-        display: "block"
+        borderBottom: "1px solid black",
+        "& a": {
+            margin: "0",
+            padding: "0",
+            position: "relative"
+        },
+        "& img": {
+            maxWidth: "100%",
+            maxHeight: "100%",
+            objectFit: "cover",
+        }
     },
     menubar: {
         display: "flex",
@@ -51,6 +59,16 @@ const useStyles = makeStyles({
             background: "#ecf3f9",
             borderRadius: "5px"
         },
+    },
+    list: {
+        width: 250,
+        "& a": {
+            color: "#000"
+        }
+
+    },
+    phoneMenuHomeOption: {
+        borderBottom: "1px solid #ccc"
     },
     rootFooter: {
         background: "#2B2B2B",
@@ -77,35 +95,110 @@ const useStyles = makeStyles({
 });
 
 
-const Blog = () => {
+const Blog = (props) => {
     const classes = useStyles();
+
+    const [state, setState] = useState({
+        left: false,
+    });
+
+    const toggleDrawer = (side, open) => event => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setState({ ...state, [side]: open });
+    };
+
+    const sideList = side => (
+        <div
+            className={classes.list}
+            role="presentation"
+            onClick={toggleDrawer(side, false)}
+            onKeyDown={toggleDrawer(side, false)}
+        >
+            <List component={Link} to="/">
+                <ListItem button className={classes.phoneMenuHomeOption}>
+                    <ListItemText primary="Home" />
+                </ListItem>
+            </List>
+            <List component={Link} to="/aboutMe">
+                <ListItem button>
+                    <ListItemText primary="About Me" />
+                </ListItem>
+            </List>
+            <List component={Link} to="/blog">
+                <ListItem button>
+                    <ListItemText primary="Blog" />
+                </ListItem>
+            </List>
+            <List component={Link} to="/myConcepts">
+                <ListItem button>
+                    <ListItemText primary="My Concepts" />
+                </ListItem>
+            </List>
+            <List component={Link} to="/contact">
+                <ListItem button>
+                    <ListItemText primary="Contact" />
+                </ListItem>
+            </List>
+            <List component={Link} to="/courses">
+                <ListItem button>
+                    <ListItemText primary="Courses" />
+                </ListItem>
+            </List>
+        </div>
+    );
+
+    const phoneMenu = (
+        <>
+            <Hidden smUp>
+                <Button onClick={toggleDrawer('left', true)}><MenuIcon /></Button>
+                <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+                    {sideList('left')}
+                </Drawer>
+            </Hidden>
+        </>
+    );
+
+
+    const desktopMenu = (
+        <Hidden xsDown>
+            <ul>
+                <li><Link to="/aboutMe" >About Me</Link></li>
+                <li><Link to="/blog" >Blog</Link></li>
+                <li><Link to="/myConcepts" >My Concepts</Link></li>
+                <li><Link to="/contact" >Contact</Link></li>
+                <li><Link to="/courses" >Courses</Link></li>
+            </ul>
+        </Hidden>
+    );
+
     return (
         <>
             <header className={classes.rootHeader}>
                 <div className={classes.logo} >
-                    <img className={classes.imageLogo} src={logoUrl} alt="logo" />
+                    <Link to="/">
+                        <img src={logoUrl} alt="logo" />
+                    </Link>
                 </div>
                 <div className={classes.menubar}>
-                    <ul>
-                        <li><Link>About Me</Link></li>
-                        <li><Link>Blog</Link></li>
-                        <li><Link>My Concepts</Link></li>
-                        <li><Link>Contact</Link></li>
-                        <li><Link>Courses</Link></li>
-                    </ul>
+                    {desktopMenu}
+                    {phoneMenu}
                 </div>
             </header>
+            <Switch>
+                <Route path="/" exact component={Home} />
+            </Switch>
             <footer className={classes.rootFooter}>
                 <div className={classes.socialMedia}>
-                    {/* //! Link doesn't correct. */}
-                    <a href="/insta" target="blanked">
+                    <a href="https://www.instagram.com/mohammadsadra_babaei_3D/" target="blanked">
                         <FaInstagram />
                     </a>
-                    <a href="/linkedin" target="blanked">
+                    <a href="https://www.linkedin.com/in/mohammad-sadra-babaei-7ba877187" target="blanked">
                         <FaLinkedin />
                     </a>
-                    <a href="/facebook" target="blanked">
-                        <FaFacebookF />
+                    <a href="https://t.me/Mohammadsadrababaei" target="blanked">
+                        <FaTelegram />
                     </a>
                 </div>
                 <p>Mohammad Sadra Babaei, All Rights Reserved</p>
