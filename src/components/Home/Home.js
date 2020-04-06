@@ -58,7 +58,7 @@ const useStyle = makeStyles({
             transition: "all 1s ease-in-out",
         },
     },
-    imageOnly: {
+    lastShowCaseImageOnly: {
         background: `url(${showCaseContentFirst_First_Main_Image}) no-repeat center center/cover`,
         padding: "8rem 0",
     },
@@ -66,13 +66,13 @@ const useStyle = makeStyles({
         paddingTop: "0.8rem",
     },
 
-    LastShowCaseContentParagraph: {
+    lastShowCaseContentParagraph: {
         padding: "0 0.5rem 0 0.5rem",
         "& p": {
             padding: "1.5rem"
         }
     },
-    headerLastShowCaseContent: {
+    lastShowCaseContentHeader: {
         display: "flex",
         color: "#333",
         borderBottom: "3px solid black",
@@ -134,7 +134,7 @@ const Home = () => {
                 </div>
                 <div className={classes.showCase}>
                     <div className={classes.lastShowCaseContent}>
-                        <div className={classes.headerLastShowCaseContent}>
+                        <div className={classes.lastShowCaseContentHeader}>
                             <div>
                                 <Link>Blog</Link>
                             </div>
@@ -144,11 +144,11 @@ const Home = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className = {classes.LastShowCaseContentParagraph}>
+                        <div className = {classes.lastShowCaseContentParagraph}>
                             <p>Ex adipisicing laboris do ea ad voluptate laboris.Duis ullamco est laborum dolor sit veniam aliqua magna incididunt anim proident non consectetur.Exercitation culpa nisi ullamco do labore cillum Lorem laborum aute sit nisi officia ut.</p>
                         </div>
                     </div>
-                    <div className={classes.imageOnly}></div>
+                    <div className={classes.lastShowCaseImageOnly}></div>
                 </div>
             </div>
         </section>
