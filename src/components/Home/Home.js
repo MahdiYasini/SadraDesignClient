@@ -6,13 +6,26 @@ import showCaseContentFirst_First_Main_Image from '../../assets/images/showCaseC
 import showCaseContentFirst_First_Main_Hover from '../../assets/images/showCaseContentFirst_Hover.jpg'
 
 const useStyle = makeStyles({
-    showCaseContent: {
+    showCase: {
         display: "flex",
-        background: "red",
+        flexWrap: "wrap",
         "& > div": {
             flex: "1",
             border: "1px solid #fff",
-            // padding: "7rem"
+        },
+    },
+    showCaseContent: {
+        transition: "background a 2s ease-in-out",
+        "& > p": {
+            fontSize: "1.7rem",
+            padding: "1.7rem 1.7rem",
+            transition: "all 1s ease-in-out",
+        },
+        "&:hover": {
+            transition: "all 1s ease-in-out",
+            "& > p": {
+                display: "none"
+            }
         },
     },
     showCaseContentLink: {
@@ -31,12 +44,6 @@ const useStyle = makeStyles({
         fontSize: "1.7rem",
         borderRadius: "5px",
     },
-    showCaseContentHide: {
-        opacity: 1,
-        "&:hover":{
-            opacity: 0
-        }
-    },
     LinkLineToLeft: {
         background: "linear-gradient(to left, #fdfcfb , rgba(0, 0, 0, 0))",
         textAlign: "right"
@@ -44,12 +51,37 @@ const useStyle = makeStyles({
     LinkLineToRight: {
         background: "linear-gradient(to right, #fdfcfb , rgba(0, 0, 0, 0))",
     },
-    showCaseContentFirst_First_Main: {
+    backgroundShowCase: {
         background: `url(${showCaseContentFirst_First_Main_Image}) no-repeat center center/cover`,
-        transition: "background a 2s ease-in-out",
         "&:hover": {
             background: `url(${showCaseContentFirst_First_Main_Hover}) no-repeat center center/cover`,
-            transition: "all 2s ease-in-out"
+            transition: "all 1s ease-in-out",
+        },
+    },
+    imageOnly: {
+        background: `url(${showCaseContentFirst_First_Main_Image}) no-repeat center center/cover`,
+        padding: "8rem 0",
+    },
+    lastShowCaseContent: {
+        paddingTop: "0.8rem",
+    },
+
+    LastShowCaseContentParagraph: {
+        padding: "0 0.5rem 0 0.5rem",
+        "& p": {
+            padding: "1.5rem"
+        }
+    },
+    headerLastShowCaseContent: {
+        display: "flex",
+        color: "#333",
+        borderBottom: "3px solid black",
+        "& > div": {
+            margin: "1rem",
+            "& a": {
+                color: "black",
+                fontSize: "1.7rem"
+            }
         }
     }
 });
@@ -58,18 +90,15 @@ const Home = () => {
     const classes = useStyle();
     return (
         <section>
-            <div className={classes.showCaseContent}>
-                <div className={classes.showCaseContentFirst_First_Main}>
+            <div className={classes.showCase}>
+                <div className={`${classes.showCaseContent} ${classes.backgroundShowCase}`}>
                     <div className={classes.showCaseContentLink}>
-                        <div className={`${classes.showCaseContentHide} ${classes.LinkLineToRight}`}>
-                            <Link>Read More</Link>
-                        </div>
                         <div className={`${classes.showCaseContentLinkLine} ${classes.LinkLineToRight}`}>
                             <Link>Read More</Link>
                         </div>
                     </div>
                 </div>
-                <div className={classes.showCaseContentFirst_First_Main}>
+                <div className={`${classes.showCaseContent} ${classes.backgroundShowCase}`}>
                     <div className={classes.showCaseContentLink}>
                         <div className={`${classes.showCaseContentLinkLine} ${classes.LinkLineToLeft}`}>
                             <Link>Read More</Link>
@@ -77,10 +106,50 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div></div>
+            <div className={classes.showCase}>
+                <div className={`${classes.showCaseContent} ${classes.backgroundShowCase}`} style = {{width: "100%"}}>
+                    <div className={classes.showCaseContentLink}>
+                        <div className={`${classes.showCaseContentLinkLine} ${classes.LinkLineToLeft}`}>
+                            <Link>Read More</Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
-                <div></div>
-                <div></div>
+                <div className={classes.showCase}>
+                    <div className={`${classes.showCaseContent} ${classes.backgroundShowCase}`}>
+                        <div className={classes.showCaseContentLink}>
+                            <div className={`${classes.showCaseContentLinkLine} ${classes.LinkLineToRight}`}>
+                                <Link>Read More</Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={`${classes.showCaseContent} ${classes.backgroundShowCase}`}>
+                        <div className={classes.showCaseContentLink}>
+                            <div className={`${classes.showCaseContentLinkLine} ${classes.LinkLineToLeft}`}>
+                                <Link>Read More</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={classes.showCase}>
+                    <div className={classes.lastShowCaseContent}>
+                        <div className={classes.headerLastShowCaseContent}>
+                            <div>
+                                <Link>Blog</Link>
+                            </div>
+                            <div>
+                                <p>
+                                    Voluptate nulla ex sint ea id excepteur ut consequat veniam sunt ex incididunt adipisicing velit.
+                                </p>
+                            </div>
+                        </div>
+                        <div className = {classes.LastShowCaseContentParagraph}>
+                            <p>Ex adipisicing laboris do ea ad voluptate laboris.Duis ullamco est laborum dolor sit veniam aliqua magna incididunt anim proident non consectetur.Exercitation culpa nisi ullamco do labore cillum Lorem laborum aute sit nisi officia ut.</p>
+                        </div>
+                    </div>
+                    <div className={classes.imageOnly}></div>
+                </div>
             </div>
         </section>
     )
