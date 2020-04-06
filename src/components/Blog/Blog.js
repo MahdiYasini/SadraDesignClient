@@ -11,6 +11,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa";
 
 import Home from '../Home/Home'
+import AboutMe from '../AboutMe/AboutMe';
 
 const useStyles = makeStyles({
     rootHeader: {
@@ -188,6 +189,7 @@ const Blog = (props) => {
             </header>
             <Switch>
                 <Route path="/" exact component={Home} />
+                <Route path="/aboutMe" exact component={AboutMe} />
             </Switch>
             <footer className={classes.rootFooter}>
                 <div className={classes.socialMedia}>
