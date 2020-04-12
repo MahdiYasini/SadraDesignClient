@@ -10,6 +10,7 @@ import { FaInstagram, FaYoutube, FaLinkedin, FaTelegram } from "react-icons/fa";
 
 import Home from '../Home/Home'
 import AboutMe from '../AboutMe/AboutMe';
+import BlogContainer from '../../containers/BlogContainer/BlogContainer';
 
 const useStyles = makeStyles({
     rootHeader: {
@@ -19,7 +20,6 @@ const useStyles = makeStyles({
         background: "rgb(255, 255, 255, 0.7)",
     },
     logo: {
-        // margin: "0 auto",
         display: "flex",
         justifyContent: "center",
         width: "100%",
@@ -194,6 +194,7 @@ const Blog = (props) => {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/aboutMe" exact component={AboutMe} />
+                <Route path="/blog" exact component={BlogContainer} />
             </Switch>
             <footer className={classes.rootFooter}>
                 <div className={classes.socialMedia}>
