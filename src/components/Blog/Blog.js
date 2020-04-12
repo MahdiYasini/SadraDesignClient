@@ -6,9 +6,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import logoUrl from '../../assets/images/logo.png';
 
-import { FaInstagram } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaLinkedin, FaTelegram } from "react-icons/fa";
 
 import Home from '../Home/Home'
 import AboutMe from '../AboutMe/AboutMe';
@@ -147,6 +145,11 @@ const Blog = (props) => {
                     <ListItemText primary="Courses" />
                 </ListItem>
             </List>
+            <a href="https://m.youtube.com/channel/UCu26vSi5TM-gLwkAoMj0lSA">
+                <ListItem button>
+                    <ListItemText primary="YouTube" />
+                </ListItem>
+            </a>
         </div>
     );
 
@@ -170,6 +173,7 @@ const Blog = (props) => {
                 <li><Link to="/myConcepts" >My Concepts</Link></li>
                 <li><Link to="/contact" >Contact</Link></li>
                 <li><Link to="/courses" >Courses</Link></li>
+                <li><a href="https://m.youtube.com/channel/UCu26vSi5TM-gLwkAoMj0lSA">YouTube</a></li>
             </ul>
         </Hidden>
     );
@@ -193,6 +197,9 @@ const Blog = (props) => {
             </Switch>
             <footer className={classes.rootFooter}>
                 <div className={classes.socialMedia}>
+                    <a href="https://m.youtube.com/channel/UCu26vSi5TM-gLwkAoMj0lSA" target="blanked">
+                        <FaYoutube />
+                    </a>
                     <a href="https://www.instagram.com/mohammadsadra_babaei_3D/" target="blanked">
                         <FaInstagram />
                     </a>
