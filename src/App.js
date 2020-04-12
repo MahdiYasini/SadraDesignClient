@@ -4,12 +4,12 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 
 import ChooseLanguage from './components/ChooseLanguage/ChooseLanguage';
-import Blog from './components/Blog/Blog';
+import Structure from './components/Structure/Structure';
 
 function App(props) {
   return (
     <BrowserRouter>
-<Blog/>
+      <Structure/>
       {/* {props.lan? <Blog/> :  <ChooseLanguage />} */}
     </BrowserRouter>
   );
