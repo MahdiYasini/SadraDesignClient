@@ -11,6 +11,7 @@ import { FaInstagram, FaYoutube, FaLinkedin, FaTelegram } from "react-icons/fa";
 import Home from '../Home/Home'
 import AboutMe from '../AboutMe/AboutMe';
 import BlogContainer from '../../containers/BlogContainer/BlogContainer';
+import CourseContainer from '../../containers/CoursesContainer/CoursesContainer';
 
 const useStyles = makeStyles({
     rootHeader: {
@@ -195,6 +196,7 @@ const Blog = (props) => {
                 <Route path="/" exact component={Home} />
                 <Route path="/aboutMe" exact component={AboutMe} />
                 <Route path="/blog" exact component={BlogContainer} />
+                <Route path="/courses" exact component={CourseContainer} />
             </Switch>
             <footer className={classes.rootFooter}>
                 <div className={classes.socialMedia}>
